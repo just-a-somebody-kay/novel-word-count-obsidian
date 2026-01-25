@@ -201,6 +201,7 @@ export interface NovelWordCountSettings {
 	includeDirectories: string;
 	excludeComments: boolean;
 	excludeCodeBlocks: boolean;
+	excludeStrikethrough: boolean;
 	excludeNonVisibleLinkPortions: boolean;
 	excludeFootnotes: boolean;
 	momentDateFormat: string;
@@ -275,6 +276,7 @@ export const DEFAULT_SETTINGS: NovelWordCountSettings = {
 	includeDirectories: "",
 	excludeComments: false,
 	excludeCodeBlocks: false,
+	excludeStrikethrough: false,
 	excludeNonVisibleLinkPortions: false,
 	excludeFootnotes: false,
 	momentDateFormat: "",

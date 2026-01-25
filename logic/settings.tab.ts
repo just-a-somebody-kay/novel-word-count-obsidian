@@ -614,6 +614,22 @@ export class NovelWordCountSettingTab extends PluginSettingTab {
 						})
 				);
 
+			//exclude strikethrough
+			new Setting(containerEl)
+				.setName("Exclude strikethrough")
+				.setDesc(
+					"Exclude ~~strikethrough~~ from all counts. May affect performance on large vaults."
+				)
+				.addToggle((toggle) =>
+					toggle
+						.setValue(this.plugin.settings.excludeStrikethrough)
+						.onChange(async (value) => {
+							this.plugin.settings.excludeStrikethrough = value;
+							await this.plugin.saveSettings();
+							await this.plugin.initialize();
+						})
+				);
+
 			new Setting(containerEl)
 				.setName("Exclude non-visible portions of links")
 				.setDesc(

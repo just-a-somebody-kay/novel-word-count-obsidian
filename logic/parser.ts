@@ -1,6 +1,7 @@
 export interface MarkdownParseConfig {
 	excludeComments: boolean;
 	excludeCodeBlocks: boolean;
+	excludeStrikethrough: boolean;
 	excludeNonVisibleLinkPortions: boolean;
 	excludeFootnotes: boolean;
 }
@@ -61,11 +62,15 @@ export function removeNonCountedContent(
 	config: MarkdownParseConfig
 ): string {
 	if (config.excludeCodeBlocks) {
-		content = content.replace(/(```.+?```)/gims, "");
+		content = content.replace(/((```.+?(```|\n))|(`.+?(`|\n)))/gims, "");
 	}
 
 	if (config.excludeComments) {
-		content = content.replace(/(%%.+?%%|<!--.+?-->)/gims, "");
+		content = content.replace(/(%%.+?(%%|\n)|<!--.+?-->)/gims, "");
+	}
+
+	if (config.excludeStrikethrough) {
+		content = content.replace(/(~~.+?~~|\n)/gims, "");
 	}
 
 	if (config.excludeNonVisibleLinkPortions) {

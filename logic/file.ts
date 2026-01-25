@@ -274,6 +274,7 @@ export class FileHelper {
 		const countResult = countMarkdown(content, {
 			excludeCodeBlocks: this.settings.excludeCodeBlocks,
 			excludeComments: this.settings.excludeComments,
+			excludeStrikethrough: this.settings.excludeStrikethrough,
 			excludeNonVisibleLinkPortions:
 				this.settings.excludeNonVisibleLinkPortions,
 			excludeFootnotes: this.settings.excludeFootnotes,
@@ -443,3 +444,6 @@ export class FileHelper {
 		return true;
 	}
 }
+export { TargetNode };
+export type { CountData };
+
