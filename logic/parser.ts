@@ -70,7 +70,7 @@ export function removeNonCountedContent(
 	}
 
 	if (config.excludeStrikethrough) {
-		content = content.replace(/(~~.+?~~|\n)/gims, "");
+		content = content.replace(/(~~.+?(~~|\n))/gims, "");
 	}
 
 	if (config.excludeNonVisibleLinkPortions) {
